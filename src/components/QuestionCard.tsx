@@ -3,7 +3,7 @@ import React from "react";
 type Props = {
   question: string;
   answers: string[];
-  callback: any;
+  callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
   userAnswer: any;
   questionNumber: number;
   totalQuestions: number;
@@ -17,7 +17,6 @@ const QuestionCard: React.FC<Props> = ({
   questionNumber,
   totalQuestions,
 }) => {
-  console.log("asdfdfsd", question, answers);
   return (
     <div>
       <p
@@ -38,7 +37,7 @@ const QuestionCard: React.FC<Props> = ({
           }}
         >
           <button
-            disabled={userAnswer}
+            disabled={!!userAnswer}
             value={answer}
             onClick={callback}
             style={{
